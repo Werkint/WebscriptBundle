@@ -10,7 +10,7 @@ class ComposerHook extends BaseScriptHandler
     public static function updateScripts($event)
     {
         $options = self::getOptions($event);
-        $scriptDir = $options['werkint-webapp-scripts'];
+        $scriptDir = $options['werkint-webscript-scripts'];
         $repo = static::PACKAGES_URL;
 
         $httpExists = function ($url) {

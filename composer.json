@@ -2,6 +2,7 @@
     "name":        "werkint/webscript-bundle",
     "type":        "library",
     "description": "Symfony2 Webscript bundle",
+    "license":     "GPL",
     "authors":     [
         {
             "name":  "Bogdan Yurov",

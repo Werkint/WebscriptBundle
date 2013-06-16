@@ -1,5 +1,5 @@
 <?php
-namespace Werkint\Bundle\WebappBundle\DependencyInjection;
+namespace Werkint\Bundle\WebscriptBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
