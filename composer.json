@@ -1,0 +1,21 @@
+{
+    "name":        "werkint/webscript-bundle",
+    "type":        "library",
+    "description": "Symfony2 Webscript bundle",
+    "authors":     [
+        {
+            "name":  "Bogdan Yurov",
+            "email": "bogdan@yurov.me"
+        }
+    ],
+    "require":     {
+        "php":                 ">=5.4",
+        "werkint/webapp-bundle": "*"
+    },
+    "target-dir":  "Werkint/Bundle/WebscriptBundle",
+    "autoload":    {
+        "psr-0": {
+            "Werkint\\Bundle\\WebscriptBundle": ""
+        }
+    }
+}
