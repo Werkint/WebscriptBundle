@@ -21,6 +21,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode->scalarNode('scripts')->end();
         $rootNode->scalarNode('respath')->end();
+        $rootNode->scalarNode('resdir')->end();
 
         $rootNode->end();
         return $treeBuilder;

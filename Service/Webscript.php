@@ -34,10 +34,11 @@ class Webscript
 
     /**
      * Attaches package
-     * @param $name
+     * @param string $name Package name
+     * @param array  $vars Variables to pass
      * @throws \Exception
      */
-    public function attach($name)
+    public function attach($name, array $vars = [])
     {
         if (!isset($this->packages[$name])) {
             throw new \Exception('Package not found: ' . $name);
@@ -72,6 +73,12 @@ class Webscript
                 continue;
             }
             $this->loadRes($path . '/' . $file, $file, $name);
+        }
+
+        // Variables
+        foreach ($vars as $name => $val) {
+            // TODO: pass only to package
+            $this->webapp->addVar($name, $val);
         }
 
         // Loaded successfully
