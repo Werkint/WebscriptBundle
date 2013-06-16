@@ -1,0 +1,6 @@
+services:
+    werkint.webscript:
+        class: Werkint\Bundle\WebscriptBundle\Service\Webscript
+        arguments:
+            - @werkint.webapp
+            - %werkint_webapp%
