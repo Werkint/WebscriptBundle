@@ -116,11 +116,9 @@ class Webscript
 
     // -- Loaded ---------------------------------------
 
-    protected $loaded = [];
-
     protected function wasLoaded($name)
     {
-        return isset($this->loaded[$name]);
+        return $this->webapp->getLoader()->isPackageLoaded($name);
     }
 
     protected function setLoaded($name)
@@ -128,7 +126,7 @@ class Webscript
         if ($this->wasLoaded($name)) {
             throw new \Exception('Script already was loaded');
         }
-        $this->loaded[$name] = true;
+        return $this->webapp->getLoader()->addPackage($name);
     }
 
 }

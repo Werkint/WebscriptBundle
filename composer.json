@@ -10,8 +10,8 @@
         }
     ],
     "require":     {
-        "php":                 ">=5.4",
-        "werkint/webapp-bundle": "*"
+        "werkint/webapp-bundle": "*",
+        "php":                   ">=5.4"
     },
     "target-dir":  "Werkint/Bundle/WebscriptBundle",
     "autoload":    {
