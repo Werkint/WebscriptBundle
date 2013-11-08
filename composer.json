@@ -1,8 +1,7 @@
 {
     "name":        "werkint/webscript-bundle",
-    "type":        "library",
     "description": "Symfony2 Webscript bundle",
-    "license":     "GPL",
+    "license":     "GPL-3.0+",
     "authors":     [
         {
             "name":  "Bogdan Yurov",
@@ -11,7 +10,10 @@
     ],
     "require":     {
         "werkint/webapp-bundle": "*",
-        "php":                   ">=5.4"
+
+        "ext-curl": "*",
+
+        "php": ">=5.4"
     },
     "target-dir":  "Werkint/Bundle/WebscriptBundle",
     "autoload":    {

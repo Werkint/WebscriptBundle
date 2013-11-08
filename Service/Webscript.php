@@ -3,6 +3,11 @@ namespace Werkint\Bundle\WebscriptBundle\Service;
 
 use Werkint\Bundle\WebappBundle\Webapp\Webapp;
 
+/**
+ * Webscript.
+ *
+ * @author Bogdan Yurov <bogdan@yurov.me>
+ */
 class Webscript
 {
 

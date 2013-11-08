@@ -3,6 +3,11 @@ namespace Werkint\Bundle\WebscriptBundle\Hook;
 
 use Sensio\Bundle\DistributionBundle\Composer\ScriptHandler as BaseScriptHandler;
 
+/**
+ * ComposerHook.
+ *
+ * @author Bogdan Yurov <bogdan@yurov.me>
+ */
 class ComposerHook extends BaseScriptHandler
 {
     const PACKAGES_URL = 'http://werkint.com/webapp-scripts/packages';
