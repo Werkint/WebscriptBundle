@@ -10,11 +10,15 @@ use Werkint\Bundle\WebappBundle\Webapp\Webapp;
  */
 class Webscript
 {
-
     protected $webapp;
     protected $scripts;
     protected $resdir;
+    protected $packages = [];
 
+    /**
+     * @param Webapp $webapp
+     * @param array  $parameters
+     */
     public function __construct(
         Webapp $webapp,
         array $parameters
@@ -28,23 +32,29 @@ class Webscript
         $this->loadPackages();
     }
 
-    protected $packages = [];
-
+    /**
+     * @return bool
+     */
     protected function loadPackages()
     {
         foreach (file($this->scripts . '/.packages') as $package) {
             $this->packages[trim($package)] = trim($package);
         }
+
+        return true;
     }
 
     /**
      * Attaches package
+     *
      * @param string $name Package name
      * @param array  $vars Variables to pass
      * @throws \Exception
      */
-    public function attach($name, array $vars = [])
-    {
+    public function attach(
+        $name,
+        array $vars = []
+    ) {
         if (!isset($this->packages[$name])) {
             throw new \Exception('Package not found: ' . $name);
         }
@@ -94,8 +104,17 @@ class Webscript
 
     protected $staticRes = [];
 
-    protected function loadRes($path, $name, $bundle)
-    {
+    /**
+     * @param string $path
+     * @param string $name
+     * @param string $bundle
+     * @throws \Exception
+     */
+    protected function loadRes(
+        $path,
+        $name,
+        $bundle
+    ) {
         if (!isset($this->staticRes[$bundle])) {
             $this->staticRes[$bundle] = [];
         } else if (isset($this->staticRes[$bundle][$name])) {
@@ -121,11 +140,20 @@ class Webscript
 
     // -- Loaded ---------------------------------------
 
+    /**
+     * @param string $name
+     * @return bool
+     */
     protected function wasLoaded($name)
     {
         return $this->webapp->getLoader()->isPackageLoaded($name);
     }
 
+    /**
+     * @param string $name
+     * @return $this
+     * @throws \Exception
+     */
     protected function setLoaded($name)
     {
         if ($this->wasLoaded($name)) {

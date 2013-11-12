@@ -1,6 +1,7 @@
 <?php
 namespace Werkint\Bundle\WebscriptBundle\Hook;
 
+use Composer\Script\CommandEvent;
 use Sensio\Bundle\DistributionBundle\Composer\ScriptHandler as BaseScriptHandler;
 
 /**
@@ -12,7 +13,10 @@ class ComposerHook extends BaseScriptHandler
 {
     const PACKAGES_URL = 'http://werkint.com/webapp-scripts/packages';
 
-    public static function updateScripts($event)
+    /**
+     * @param CommandEvent $event
+     */
+    public static function updateScripts(CommandEvent $event)
     {
         $options = self::getOptions($event);
         $scriptDir = $options['werkint-webscript-scripts'];
@@ -100,7 +104,7 @@ class ComposerHook extends BaseScriptHandler
             touch($packageDir . '/.package.ini');
             if ($hashTable[sha1($package)] !=
                 sha1(sha1_file($packageDir . '/.hashes') .
-                sha1_file($packageDir . '/.package.ini'))
+                    sha1_file($packageDir . '/.package.ini'))
             ) {
                 $getFile($packageRepo . '/.hashes', $packageDir . '/.hashes');
                 $getFile($packageRepo . '/.package.ini', $packageDir . '/.package.ini');
@@ -117,4 +121,5 @@ class ComposerHook extends BaseScriptHandler
         }
         echo "\n";
     }
+
 }

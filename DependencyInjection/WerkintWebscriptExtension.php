@@ -14,6 +14,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 class WerkintWebscriptExtension extends Extension
 {
+    /**
+     * {@inheritdoc}
+     */
     public function load(
         array $configs,
         ContainerBuilder $container
@@ -33,4 +36,5 @@ class WerkintWebscriptExtension extends Extension
         );
         $loader->load('services.yml');
     }
+
 }

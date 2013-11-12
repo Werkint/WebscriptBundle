@@ -12,24 +12,35 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements
     ConfigurationInterface
 {
-
     protected $alias;
 
+    /**
+     * @param string $alias
+     */
     public function __construct($alias)
     {
         $this->alias = $alias;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root($this->alias)->children();
 
-        $rootNode->scalarNode('scripts')->end();
-        $rootNode->scalarNode('respath')->end();
-        $rootNode->scalarNode('resdir')->end();
+        // @formatter:off
+        $treeBuilder
+            ->root($this->alias)
+            ->children()
+                ->scalarNode('scripts')->isRequired()->end()
+                ->scalarNode('respath')->isRequired()->end()
+                ->scalarNode('resdir')->isRequired()->end()
+            ->end()
+        ;
+        // @formatter:on
 
-        $rootNode->end();
         return $treeBuilder;
     }
+
 }

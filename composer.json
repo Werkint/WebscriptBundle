@@ -9,9 +9,11 @@
         }
     ],
     "require":     {
-        "werkint/webapp-bundle": "*",
+        "symfony/framework-bundle":   "2.3.*",
+        "sensio/distribution-bundle": "2.3.*",
 
-        "ext-curl": "*",
+        "werkint/webapp-bundle": "0.1.x-dev",
+        "guzzle/guzzle":         "*",
 
         "php": ">=5.4"
     },
@@ -20,5 +22,12 @@
         "psr-0": {
             "Werkint\\Bundle\\WebscriptBundle": ""
         }
-    }
+    },
+    "extra":       {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    },
+
+    "minimum-stability": "dev"
 }
