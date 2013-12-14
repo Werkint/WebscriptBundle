@@ -2,6 +2,7 @@
 namespace Werkint\Bundle\WebscriptBundle\Service;
 
 use Werkint\Bundle\WebappBundle\Webapp\Webapp;
+use Werkint\Bundle\WebappBundle\Webapp\WebappInterface;
 
 /**
  * Webscript.
@@ -16,11 +17,11 @@ class Webscript
     protected $packages = [];
 
     /**
-     * @param Webapp $webapp
-     * @param array  $parameters
+     * @param WebappInterface $webapp
+     * @param array           $parameters
      */
     public function __construct(
-        Webapp $webapp,
+        WebappInterface $webapp,
         array $parameters
     ) {
         $this->webapp = $webapp;
@@ -28,6 +29,8 @@ class Webscript
         // parameters
         $this->scripts = $parameters['scripts'];
         $this->resdir = $parameters['resdir'];
+
+        $this->webapp->addVar('webapp-respath', $parameters['respath'], true);
 
         $this->loadPackages();
     }
