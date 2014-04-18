@@ -56,7 +56,8 @@ class Webscript
      */
     public function attach(
         $name,
-        array $vars = []
+        array $vars = [],
+        $skipFiles = false
     ) {
         if (!isset($this->packages[$name])) {
             throw new \Exception('Package not found: ' . $name);
@@ -74,23 +75,25 @@ class Webscript
             if (!($dep = trim($dep))) {
                 continue;
             }
-            $this->attach($dep);
+            $this->attach($dep, [], $skipFiles);
         }
 
-        // Scripts
-        foreach (explode(',', $meta['files']) as $file) {
-            if (!($file = trim($file))) {
-                continue;
+        if (!$skipFiles) {
+            // Scripts
+            foreach (explode(',', $meta['files']) as $file) {
+                if (!($file = trim($file))) {
+                    continue;
+                }
+                $this->webapp->attachFile($path . '/' . $file);
             }
-            $this->webapp->attachFile($path . '/' . $file);
-        }
 
-        // Resources
-        foreach (explode(',', $meta['res']) as $file) {
-            if (!($file = trim($file))) {
-                continue;
+            // Resources
+            foreach (explode(',', $meta['res']) as $file) {
+                if (!($file = trim($file))) {
+                    continue;
+                }
+                $this->loadRes($path . '/' . $file, $file, $name);
             }
-            $this->loadRes($path . '/' . $file, $file, $name);
         }
 
         // Variables
